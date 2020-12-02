@@ -9,10 +9,10 @@ namespace DevTeamsProject
     public class Developer
     {
         public string Name { get; set; }
-        public string Id { get; set; }
+        public int Id { get; set; }
         public bool HasPluralSight { get; set; }
 
-        public Developer(string name, string id, bool hasPluralsight)
+        public Developer(string name, int id, bool hasPluralsight)
         {
             Name = name;
             Id = id;
