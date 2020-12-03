@@ -10,7 +10,7 @@ namespace DevTeamsProject
     {
 
         //Need instances of DevTeamRepo and Developer Repo. Remove the Developer field
-        private Developer _IDRepo = new Dictionary();
+        private Developer _IDRepo = new Developer();
 
         public void Run()
         {
