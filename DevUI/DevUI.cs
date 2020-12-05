@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevTeamsProject;
 
 namespace DevTeamsProject
 {
@@ -104,18 +105,20 @@ namespace DevTeamsProject
          
             int devId = int.Parse(Console.ReadLine());
             Console.WriteLine("does dev have pluralsight? (y/n)");
-            //make has pluralsight a boolean and parse it like we did with the integer above
+           
             string pluralAnswer = Console.ReadLine();
             bool hasPluralSight;
             if(pluralAnswer == "y")
             {
                 hasPluralSight = true;
-               //add to list of pluralsight
+                //add to list of pluralsight
+                List<bool> HasPluralsight = new List<bool>();
             }
             else
             {
                 hasPluralSight = false;
-                //add to other list without pluralsight 
+                //add to other list without pluralsight
+                List<bool> NoPluralsight = new List<bool>();
             }
             Developer newID = new Developer(name, devId, hasPluralSight);
             //call Developerrepo field rather than developer field.
@@ -132,37 +135,145 @@ namespace DevTeamsProject
 
         private void UpdateDev()
         {
+            ShowDev();
 
+            Console.WriteLine("Enter developer ID");
+
+            string oldID = Console.ReadLine();
+            Console.WriteLine("enter name");
+            string name = Console.ReadLine();
+
+            Console.WriteLine("enter ID");
+
+            int devId = int.Parse(Console.ReadLine());
+            Console.WriteLine("does dev have pluralsight? (y/n)");
+           
+            string pluralAnswer = Console.ReadLine();
+            bool hasPluralSight;
+            if (pluralAnswer == "y")
+            {
+                hasPluralSight = true;
+                //add to list of pluralsight
+                List<bool> HasPluralsight = new List<bool>();
+            }
+            else
+            {
+                hasPluralSight = false;
+                //add to other list without pluralsight 
+                List<bool> NoPluralsight = new List<bool>();
+            }
+            Developer newID = new Developer(name, devId, hasPluralSight);
+            //call Developerrepo field rather than developer field.
+            _IDRepo.adddeveloper(newID);
+            _DeveloperDirectory.UpdateDeveloper(oldID, newID);
+
+            if (wasupdated)
+            {
+                Console.WriteLine("was updated");
+            }
+            else
+            {
+                Console.WriteLine("could not update");
+            }
         }
 
         private void DeleteDev()
         {
+            ShowDev();
 
+            Console.WriteLine("Enter ID of developer");
+            bool wasDeleted = _developerDirectory.Remove(information);
+
+            if (wasDeleted)
+            {
+                Console.WriteLine("Developer was deleted");
+            }
+            else
+            {
+                Console.WriteLine("Nah fam could delete Developer");
+            }
         }
 
         private void CreateNewTeam()
         {
 
+            Console.WriteLine("enter name");
+            string name = Console.ReadLine();
+
+            Console.WriteLine("enter ID");
+
+            int devId = int.Parse(Console.ReadLine());
         }
 
         private void ShowTeam()
         {
-
+            List<Developer> listOfDevelopers = _developerDirectory.GetDevelopers();
         }
 
         private void UpdateTeam()
         {
+            ShowDev();
 
+            Console.WriteLine("Enter developer ID");
+
+            string oldID = Console.ReadLine();
+            Console.WriteLine("enter name");
+            string name = Console.ReadLine();
+
+            Console.WriteLine("enter ID");
+
+            int devId = int.Parse(Console.ReadLine());
+            Console.WriteLine("does dev have pluralsight? (y/n)");
+
+            string pluralAnswer = Console.ReadLine();
+            bool hasPluralSight;
+            if (pluralAnswer == "y")
+            {
+                hasPluralSight = true;
+                //add to list of pluralsight
+                List<bool> HasPluralsight = new List<bool>();
+            }
+            else
+            {
+                hasPluralSight = false;
+                //add to other list without pluralsight 
+                List<bool> NoPluralsight = new List<bool>();
+            }
+            Developer newID = new Developer(name, devId, hasPluralSight);
+            //call Developerrepo field rather than developer field.
+            _IDRepo.adddeveloper(newID);
+            _DeveloperDirectory.UpdateDeveloper(oldID, newID);
+
+            if (wasupdated)
+            {
+                Console.WriteLine("was updated");
+            }
+            else
+            {
+                Console.WriteLine("could not update");
+            }
         }
 
         private void DeleteTeam()
         {
+            ShowDev();
 
+            Console.WriteLine("Enter ID of developer");
+            bool wasDeleted = _developerDirectory.Remove(information);
+
+            if (wasDeleted)
+            {
+                Console.WriteLine("Developer was deleted");
+            }
+            else
+            {
+                Console.WriteLine("Nah fam could delete Developer");
+            }
         }
 
         private void HasPluralsight()
         {
-
+            List<bool> HasPluralsight = new List<bool>();
         }
 
     }
